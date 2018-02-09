@@ -1,5 +1,36 @@
-{{ usuarioService.usuarios | json}}
-     <section class="ae-container-fluid ae-container-fluid--inner rk-portfolio">
+<!-- {{ usuarioService.usuarios | json}} -->
+<div class="pull-left">
+  <button type="button" routerLink="/add" name="button">+ Agregar</button>
+</div>
+
+<div class="pull-left">
+  <button type="button" routerLink="/dataform" name="button">+ Agregar2</button>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+      <th scope="col">Fecha Creación</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- *ngIf="usuarioService.usuarios.length = 0" -->
+    <tr *ngFor="let usuario of usuarioService.usuarios" >
+      <th scope="row">{{usuario.id}}</th>
+      <td>{{usuario.nombre_despliegue}}</td>
+      <td>{{usuario.email}}</td>
+      <td>{{usuario.status}}</td>
+      <td>{{usuario.created}}</td>
+      <td></td>
+    </tr>
+
+  </tbody>
+</table>
+     <!-- <section class="ae-container-fluid ae-container-fluid--inner rk-portfolio">
        <div class="au-xs-ta-center au-lg-ta-left">
          <ul class="rk-menu rk-categories-menu">
            <li class="rk-menu__item"><a href="portfolio.html" class="rk-menu__link">Flex</a>
@@ -66,4 +97,4 @@
              <p>Ui/UX</p>
            </div></a>
        </div>
-     </section>
+     </section> -->

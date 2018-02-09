@@ -1,0 +1,179 @@
+<!-- <div [hidden]="submitted"> -->
+<div class="container">
+
+  <form novalidate (ngSubmit)="nuevoUsuario(userForm)" #userForm="ngForm">
+    <div class="row">
+
+    <h1>Agregar</h1>
+
+
+      <div class="form-group col-md-12">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre"
+               required
+               minlength="5"
+               [(ngModel)]="usuario.nombre" name="nombre" #name="ngModel" >
+         <!-- <br>TODO: remove this: {{spy.className}} -->
+
+         <div *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="alert alert-danger">
+
+           <div *ngIf="name.errors.required">
+             El nombre es requerido
+           </div>
+           <div *ngIf="name.errors.minlength">
+             El nombre {{nombre}} es muy corto, debe tener al menos 5 caracteres.
+           </div>
+
+         </div>
+      </div>
+
+
+
+      <div class="form-group col-md-12">
+        <label for="apellidos">Apellido</label>
+        <input type="text"  class="form-control" id="apellidos"
+               required
+               minlength="5"
+               [(ngModel)]="usuario.apellidos" name="apellidos" #ape="ngModel">
+
+         <div *ngIf="ape.invalid && (ape.dirty || ape.touched)"
+              class="alert alert-danger">
+
+           <div *ngIf="ape.errors.required">
+             El apellido es requerido
+           </div>
+           <div *ngIf="ape.errors.minlength">
+             El apellido {{nombre}} es muy corto, debe tener al menos 5 caracteres.
+           </div>
+
+         </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="email">Email</label>
+        <input type="text"  class="form-control" id="email"
+               required
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+               [(ngModel)]="usuario.email" name="email" #correo="ngModel">
+
+       <div *ngIf="correo.invalid && (correo.dirty || correo.touched)"
+            class="alert alert-danger">
+
+         <div *ngIf="correo.errors.required">
+           El email es requerido
+         </div>
+
+         <div *ngIf="correo.errors?.pattern">
+           El email es invalido
+         </div>
+
+       </div>
+
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="rut">Rut</label>
+        <input type="text"  class="form-control" id="rut"
+               required
+               [(ngModel)]="usuario.rut" name="rut" #ci="ngModel">
+       <div *ngIf="ci.invalid && (ci.dirty || ci.touched)"
+            class="alert alert-danger">
+
+         <div *ngIf="ci.errors.required">
+           El rut es requerido
+         </div>
+
+       </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="usuario">Usuario</label>
+        <input type="text"  class="form-control" id="usuario"
+               required
+               minlength="5"
+               [(ngModel)]="usuario.usuario" name="usuario" #user="ngModel">
+
+         <div *ngIf="user.invalid && (user.dirty || user.touched)"
+              class="alert alert-danger">
+
+           <div *ngIf="user.errors.required">
+             El usuario es requerido
+           </div>
+
+           <div *ngIf="user.errors.minlength">
+             El usuario {{usuario}} es muy corto, debe tener al menos 5 caracteres.
+           </div>
+
+         </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="clave">Clave</label>
+        <input type="text"  class="form-control" id="clave"
+               required
+               minlength="6"
+               (ngModel)="usuario.clave" name="clave" #pass="ngModel">
+
+       <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+            class="alert alert-danger">
+
+         <div *ngIf="pass.errors.required">
+           La clave es requerida
+         </div>
+
+         <div *ngIf="pass.errors.minlength">
+           La clave debe contener al menos 6 caracteres
+         </div>
+
+       </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="clave2">Confirmar</label>
+        <input type="text"  class="form-control" id="clave2"
+               required
+               (ngModel)="usuario.clave2" name="clave2"
+               #cla="ngModel">
+       <div *ngIf="(clave !== clave2)"
+            class="alert alert-danger">
+
+         <div >
+           Las contraseñas deben ser iguales
+         </div>
+
+       </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="sexo">Sexo</label>
+        <select class="form-control"  id="sexo"
+                required
+                [(ngModel)]="usuario.sexo" name="sexo" #sex="ngModel">
+          <option value="1">Masculino</option>
+          <option value="2">femenino</option>
+        </select>
+        <div *ngIf="sex.invalid && (sex.dirty || sex.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="sex.errors.required">
+            Debe seleccionar el sexo
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <button type="button"
+              (click)="nuevoUsuario(); userForm.reset()"
+              class="btn btn-success">Guardar</button> -->
+              <!-- [disabled]="!userForm.form.valid" -->
+              <!-- (click)="nuevoUsuario(); userForm.reset()" -->
+
+      <button type="submit" class="btn btn-success">
+              Guardar
+      </button>
+  <!-- {{userForm.form.valid}} -->
+
+  </div>
+  </form>
+</div>

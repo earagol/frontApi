@@ -1,0 +1,147 @@
+<!-- <div [hidden]="submitted"> -->
+  <form (ngSubmit)="nuevoUsuario()" [formGroup]="forma">
+    <div class="row">
+
+    <h1>Agregar 2 Data</h1>
+
+      <div class="form-group col-md-12">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre"
+               formControlName="nombre"
+               >
+               <div *ngIf="forma.controls['nombre'].invalid && (forma.controls['nombre'].dirty || forma.controls['nombre'].touched)"
+                    class="alert alert-danger">
+                   <div *ngIf="forma.controls['nombre'].errors?.required">
+                     El nombre es requerido
+                   </div>
+                   <div *ngIf="forma.controls['nombre'].errors?.minlength">
+                     El nombre {{forma.controls['nombre'].value}} es muy corto, debe tener al menos 5 caracteres.
+                   </div>
+               </div>
+      </div>
+
+
+
+      <div class="form-group col-md-12">
+        <label for="apellidos">Apellido</label>
+        <input type="text"  class="form-control" id="apellidos"
+              formControlName="apellidos"
+              >
+              <div *ngIf="forma.controls['apellidos'].invalid && (forma.controls['apellidos'].dirty || forma.controls['apellidos'].touched)"
+                   class="alert alert-danger">
+                <div *ngIf="forma.controls['apellidos'].errors?.required">
+                  El apellidos es requerido
+                </div>
+                <div *ngIf="forma.controls['apellidos'].errors?.minlength">
+                  El apellido {{forma.controls['apellidos'].value}} es muy corto, debe tener al menos 5 caracteres.
+                </div>
+              </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="email">Email</label>
+        <input type="text"  class="form-control" id="email"
+               formControlName="email"
+               >
+               <div *ngIf="forma.controls['email'].invalid && (forma.controls['email'].dirty || forma.controls['email'].touched)"
+                    class="alert alert-danger">
+                 <div *ngIf="forma.get('email').errors?.required">
+                   El email es requerido
+                 </div>
+                 <div *ngIf="forma.controls['email'].errors?.pattern">
+                   El email es invalido
+                 </div>
+              </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="rut">Rut</label>
+        <input type="text"  class="form-control" id="rut"
+               formControlName="rut"
+               >
+               <div *ngIf="forma.controls['rut'].invalid && (forma.controls['rut'].dirty || forma.controls['rut'].touched)"
+                    class="alert alert-danger">
+                 <div *ngIf="forma.controls['rut'].errors?.required">
+                   El rut es requerido
+                 </div>
+               </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="usuario">Usuario</label>
+        <input type="text"  class="form-control" id="usuario"
+               formControlName="usuario"
+               >
+               <div *ngIf="forma.controls['usuario'].invalid && (forma.controls['usuario'].dirty || forma.controls['usuario'].touched)"
+                    class="alert alert-danger">
+                 <div *ngIf="forma.controls['usuario'].errors?.required">
+                   El usuario es requerido
+                 </div>
+                 <div *ngIf="forma.controls['usuario'].errors?.minlength">
+                   El usuario {{forma.controls['usuario'].value}} es muy corto, debe tener al menos 5 caracteres.
+                 </div>
+               </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="clave">Clave</label>
+        <input [type]="(forma.controls['verclave'].value)?'text':'password'"  class="form-control" id="clave"
+               formControlName="clave"
+               >
+               <div *ngIf="forma.controls['clave'].invalid && (forma.controls['clave'].dirty || forma.controls['clave'].touched)"
+                    class="alert alert-danger">
+                 <div *ngIf="forma.controls['clave'].errors?.required">
+                   La clave es requerida
+                 </div>
+               </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="clave2">Confirmar</label>
+        <input [type]="(forma.controls['verclave'].value)?'text':'password'"  class="form-control" id="clave2"
+               formControlName="clave2"
+               >
+               <div *ngIf="forma.controls['clave2'].invalid && (forma.controls['clave2'].dirty || forma.controls['clave2'].touched)"
+                    class="alert alert-danger">
+
+                 <div *ngIf="forma.controls['clave2'].errors?.noiguales">
+                   Las contraseñas deben ser iguales
+                 </div>
+
+               </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="show">Mostrar Contraseña</label>
+        <input type="checkbox"
+        class="form-control"
+        formControlName="verclave"
+        >
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="sexo">Sexo</label>
+        <select class="form-control"  id="sexo"
+                formControlName="sexo">
+          <option value="">Seleccione el sexo</option>
+          <option value="1">Masculino</option>
+          <option value="2">femenino</option>
+        </select>
+        <div *ngIf="forma.controls['sexo'].invalid && (forma.controls['sexo'].dirty || forma.controls['sexo'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="forma.controls['sexo'].errors?.required">
+            El sexo es requerida
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">
+              Guardar
+      </button>
+  <!-- {{userForm.form.valid}} -->
+
+  {{ forma.valid }}
+  {{ forma.status }}
+
+  </div>
+  </form>
