@@ -1,0 +1,33 @@
+<!-- {{ usuarioService.usuarios | json}} -->
+<div class="row">
+
+  <div class="pull-left">
+    <button type="button" class="btn btn-succes" [routerLink]="['/nuevo']" name="button">+ Agregar2</button>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Status</th>
+        <th scope="col">Fecha Creación</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- *ngIf="usuarioService.usuarios.length = 0" -->
+      <tr *ngFor="let usuario of usuarioService.usuarios; let i = index" >
+        <td>{{usuario.nombre_despliegue}}</td>
+        <td>{{usuario.email}}</td>
+        <td>{{usuario.status}}</td>
+        <td>{{usuario.created | date:'dd/mm/yyyy HH:mm:ss'}}</td>
+        <td>
+            <button class="btn btn-sm btn-primary" [routerLink]="['/editar',i]">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="delete(i);">Eliminar</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

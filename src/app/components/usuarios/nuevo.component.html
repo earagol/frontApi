@@ -135,12 +135,26 @@
         </div>
       </div>
 
+      <div class="form-group col-md-4">
+        <label for="show">Imagen</label>
+        <input type="file"
+        class="form-control"
+        formControlName="imagen"
+        (change)="onFileChange($event);"
+        #fileInput
+        >
+      </div>
+      <input type="hidden" name="fileHidden" formControlName="imageInput"/> <!-- Validation Field -->
+
       <button type="submit"
               class="btn btn-success"
-              [disabled]="!forma.valid">
+              >
               Guardar
       </button>
-  <!-- {{userForm.form.valid}} -->
+  <!--
+      {{userForm.form.valid}}
+      [disabled]="!forma.valid"
+    -->
 
   {{ forma.valid }}
   {{ forma.status }}

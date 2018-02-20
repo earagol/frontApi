@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
-  selector: 'app-dataform',
-  templateUrl: './dataform.component.html',
+  selector: 'app-nuevo',
+  templateUrl: './nuevo.component.html',
   styles: []
 })
-export class DataformComponent implements OnInit {
+export class NuevoComponent implements OnInit {
 
   forma:FormGroup;
   typeFieldsPassword:string='text';
 
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private usuarioService: UsuarioService) {
       // Validators.pattern("^(\d{2}\.\d{3}\.\d{3}-)([a-zA-Z]{1}$|\d{1}$)" rut
@@ -37,13 +38,17 @@ export class DataformComponent implements OnInit {
       'clave': new FormControl('',Validators.required),
       'clave2': new FormControl(),
       'sexo': new FormControl('',Validators.required),
-      'verclave': new FormControl(false)
+      'verclave': new FormControl(false),
+      'imagen': new FormControl(null),
+      'imageInput': new FormControl('',Validators.required)
     })
 
     this.forma.controls['clave2'].setValidators([
                                     Validators.required,
                                     this.noIgual.bind( this.forma )
                                   ])
+
+
   }
 
   ngOnInit(){
@@ -85,6 +90,31 @@ export class DataformComponent implements OnInit {
   }
 
 
+  /////////////////load archivo
+
+  // onFileChange(event) {
+  //   let reader = new FileReader();
+  //   if(event.target.files && event.target.files.length > 0) {
+  //     let file = event.target.files[0];
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       this.forma.get('imagen').setValue({
+  //         filename: file.name,
+  //         filetype: file.type,
+  //         value: reader.result.split(',')[1]
+  //       })
+  //     };
+  //   }
+  // }
+
+  // onFileChange($event) {
+  //      let file = $event.target.files[0]; // <--- File Object for future use.
+  //      this.forma.controls['imageInput'].setValue(file ? file.name : ''); // <-- Set Value for Validation
+  // }
+
+
+  ///////////////formdata
+
   nuevoUsuario(){
 
     console.log(this.forma.value);
@@ -92,4 +122,4 @@ export class DataformComponent implements OnInit {
 
   }
 
-}
+  }

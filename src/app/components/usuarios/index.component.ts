@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
-  selector: 'app-principal',
-  templateUrl: './principal.component.html'
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styles: []
 })
-export class PrincipalComponent implements OnInit {
+export class IndexComponent implements OnInit {
 
   usuarios: any;
 
@@ -26,6 +27,16 @@ export class PrincipalComponent implements OnInit {
 
   editar(index:number){
     console.log('index',index);
+  }
+
+  delete(index:number){
+
+    this.usuarioService.deleteUsuario(index).subscribe(res=>{
+      if(res){
+      }else{
+      }
+    });
+
   }
 
 }

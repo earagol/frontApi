@@ -1,8 +1,8 @@
 <!-- <div [hidden]="submitted"> -->
-  <form (ngSubmit)="nuevoUsuario()" [formGroup]="forma">
+  <form (ngSubmit)="editaUsuario()" [formGroup]="forma">
     <div class="row">
 
-    <h1>Agregar 2 Data</h1>
+    <h1>Editar</h1>
 
       <div class="form-group col-md-12">
         <label for="nombre">Nombre</label>
@@ -69,7 +69,9 @@
 
       <div class="form-group col-md-12">
         <label for="usuario">Usuario</label>
-        <input type="text"  class="form-control" id="usuario"
+        <input type="text"
+              class="form-control"
+              id="usuario"
                formControlName="usuario"
                >
                <div *ngIf="forma.controls['usuario'].invalid && (forma.controls['usuario'].dirty || forma.controls['usuario'].touched)"
@@ -83,39 +85,13 @@
                </div>
       </div>
 
-      <div class="form-group col-md-12">
-        <label for="clave">Clave</label>
-        <input [type]="(forma.controls['verclave'].value)?'text':'password'"  class="form-control" id="clave"
-               formControlName="clave"
-               >
-               <div *ngIf="forma.controls['clave'].invalid && (forma.controls['clave'].dirty || forma.controls['clave'].touched)"
-                    class="alert alert-danger">
-                 <div *ngIf="forma.controls['clave'].errors?.required">
-                   La clave es requerida
-                 </div>
-               </div>
-      </div>
 
-      <div class="form-group col-md-12">
-        <label for="clave2">Confirmar</label>
-        <input [type]="(forma.controls['verclave'].value)?'text':'password'"  class="form-control" id="clave2"
-               formControlName="clave2"
-               >
-               <div *ngIf="forma.controls['clave2'].invalid && (forma.controls['clave2'].dirty || forma.controls['clave2'].touched)"
-                    class="alert alert-danger">
-
-                 <div *ngIf="forma.controls['clave2'].errors?.noiguales">
-                   Las contraseñas deben ser iguales
-                 </div>
-
-               </div>
-      </div>
 
       <div class="form-group col-md-4">
-        <label for="show">Mostrar Contraseña</label>
+        <label for="show">Activo</label>
         <input type="checkbox"
         class="form-control"
-        formControlName="verclave"
+        formControlName="activo"
         >
       </div>
 

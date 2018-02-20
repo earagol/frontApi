@@ -19,13 +19,16 @@
   </thead>
   <tbody>
     <!-- *ngIf="usuarioService.usuarios.length = 0" -->
-    <tr *ngFor="let usuario of usuarioService.usuarios" >
+    <tr *ngFor="let usuario of usuarioService.usuarios; let i of index" >
       <th scope="row">{{usuario.id}}</th>
       <td>{{usuario.nombre_despliegue}}</td>
       <td>{{usuario.email}}</td>
       <td>{{usuario.status}}</td>
-      <td>{{usuario.created}}</td>
-      <td></td>
+      <td>{{usuario.created | date:'dd/mm/yyyy HH:mm:ss'}}</td>
+      <td>
+          <button class="btn btn-sm btn-primary"
+                  (click)='editar(i);'>Editar</button>
+      </td>
     </tr>
 
   </tbody>
