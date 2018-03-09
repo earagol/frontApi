@@ -18,6 +18,12 @@ import { UsuarioService } from './services/usuario.service';
 import { IndexComponent } from './components/usuarios/index.component';
 import { NuevoComponent } from './components/usuarios/nuevo.component';
 import { EditarComponent } from './components/usuarios/editar.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { FirstComponent } from './components/dashboard/first.component';
+import { SecondComponent } from './components/dashboard/second.component';
+import { ThirdComponent } from './components/dashboard/third.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 // import { ConfirmDirective } from './directivas/confirm.directive';
 
 @NgModule({
@@ -27,7 +33,16 @@ import { EditarComponent } from './components/usuarios/editar.component';
     FooterComponent,
     IndexComponent,
     NuevoComponent,
-    EditarComponent
+    EditarComponent,
+    LoginComponent,
+    HomeComponent,
+    FirstComponent,
+    FirstComponent,
+    FirstComponent,
+    FirstComponent,
+    SecondComponent,
+    ThirdComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

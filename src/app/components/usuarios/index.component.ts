@@ -11,9 +11,12 @@ export class IndexComponent implements OnInit {
   usuarios: any;
 
   constructor(private usuarioService: UsuarioService) {
-    this.getUsuarios();
-    console.log('adad');
-    console.log(this.usuarios);
+    if(!this.usuarios){
+      this.getUsuarios();
+      console.log('adad');
+      console.log(this.usuarios);
+    }
+
   }
 
   ngOnInit() {
